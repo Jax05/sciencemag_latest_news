@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative "../config/environment"
+require "./lib/sciencemag_latest_news"
 
-puts "Hello World!"
+SciencemagLatestNews::CLI.new.call
