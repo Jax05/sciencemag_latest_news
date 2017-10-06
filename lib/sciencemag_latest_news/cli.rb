@@ -12,9 +12,6 @@ class SciencemagLatestNews::CLI
   end
 
   def list
-    # need to list all the story headlines here
-    # use each.with_index(1) on collection of all stories
-    # like @stories = Story.all, @stories.each.with_index(1) blah blah
     @stories = SciencemagLatestNews::Story.latest_stories
     @stories.each.with_index(1) do |story, i|
       puts "#{i}. #{story.headline}"
@@ -28,15 +25,17 @@ class SciencemagLatestNews::CLI
       puts "Type the number of the story you'd like to read. You can also type 'list' to see the stories again or 'exit' to exit."
       input = gets.chomp
 
-      # need to check that input is correct - more than 0 but less than
-      # total num of stories
-      # could use a find method here and pass in input, story = Story.find(i)
-      # then puts story.headline, story.author | story.date, story.content
-      case input
-      when "1" then puts "Here's more info on bees."
-      when "2" then puts "Here's more info on volcano stuff."
-      when "list" then list
-      else "I don't know what you want to do. Type 'list' or 'exit'."
+      if input.to_i > 0 && input.to_i <= SciencemagLatestNews::Story.latest_stories.size
+        story = SciencemagLatestNews::Story.find(input)
+        puts "#{story.headline}"
+        puts "#{story.author} | #{story.date}"
+        puts "#{story.content}"
+      elsif input == "list"
+        list
+      elsif input == "exit"
+        exit
+      else
+        puts "Please choose one of the options listed."
       end
     end
   end
