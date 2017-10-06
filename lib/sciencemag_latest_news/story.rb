@@ -13,10 +13,13 @@ class SciencemagLatestNews::Story
     # for each listing, create a story instance, gather details & push to latest_stories
     story = SciencemagLatestNews::Story.new
     story.headline = "Bees!!"
+    story.author = "G Patty"
+    story.date = "October 6, 2017"
+    story.content = "A story about bees."
     @@latest_stories << story
   end
 
   def self.find(id)
-    @@latest_stories[id - 1]
+    @@latest_stories[id.to_i - 1]
   end
 end
