@@ -1,7 +1,6 @@
 class SciencemagLatestNews::Story
   attr_accessor :headline, :author, :date, :content, :url
-# cli call needs to call a prime method that scrapes all the stories
-# stories need headline, author, date, content, and url
+
   @@latest_stories = []
 
   def self.latest_stories
@@ -9,17 +8,21 @@ class SciencemagLatestNews::Story
   end
 
   def self.scrape_latest_stories
-    # actually scrapes the site
-    # for each listing, create a story instance, gather details & push to latest_stories
-    story = SciencemagLatestNews::Story.new
-    story.headline = "Bees!!"
-    story.author = "G Patty"
-    story.date = "October 6, 2017"
-    story.content = "A story about bees."
-    @@latest_stories << story
+    doc = Nokogiri::HTML(open("http://www.sciencemag.org/news"))
+
+    doc.css(".subprime--a .item-list li").each do |item|
+      story = self.new
+      story.headline = item.css(".media__headline a").text
+      story.author = item.css(".byline a").text
+      story.date = item.css(".byline time").text
+      story.url = item.css(".media__headline a").attribute("href").value
+
+      self.scrape_story_content
+      self.latest_stories << story
+    end
   end
 
   def self.find(id)
-    @@latest_stories[id.to_i - 1]
+    self.latest_stories[id.to_i - 1]
   end
 end
