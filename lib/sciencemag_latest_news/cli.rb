@@ -1,6 +1,7 @@
 class SciencemagLatestNews::CLI
 
   def call
+    SciencemagLatestNews::Story.scrape_latest_stories
     greeting
     list
     menu
@@ -14,8 +15,10 @@ class SciencemagLatestNews::CLI
     # need to list all the story headlines here
     # use each.with_index(1) on collection of all stories
     # like @stories = Story.all, @stories.each.with_index(1) blah blah
-    puts "1. Bees"
-    puts "2. Volcano"
+    @stories = SciencemagLatestNews::Story.latest_stories
+    @stories.each.with_index(1) do |story, i|
+      puts "#{i}. #{story.headline}"
+    end
   end
 
   def menu
