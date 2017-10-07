@@ -1,4 +1,4 @@
-# ScienceMag Latest News
+# Science Magazine Latest News
 
 This gem allows you to read all the latest news from the Science Magazine website via CLI.
 
