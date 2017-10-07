@@ -7,11 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "sciencemag_latest_news"
   spec.version       = SciencemagLatestNews::VERSION
   spec.authors       = ["'Carley Tripp'"]
-  spec.email         = ["'carley.tripp@outlook.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Read all the latest news from the Science Magazine website via CLI.}
+  spec.homepage      = "https://github.com/Jax05/sciencemag_latest_news"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
