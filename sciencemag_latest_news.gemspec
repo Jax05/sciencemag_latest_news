@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "sciencemag_latest_news"
   spec.version       = SciencemagLatestNews::VERSION
   spec.authors       = ["'Carley Tripp'"]
+  spec.email         = "carley.tripp@outlook.com"
 
   spec.summary       = %q{Read all the latest news from the Science Magazine website via CLI.}
   spec.homepage      = "https://github.com/Jax05/sciencemag_latest_news"
