@@ -29,7 +29,7 @@ class SciencemagLatestNews::CLI
         story = SciencemagLatestNews::Story.find(input)
         puts "#{story.headline}"
         puts "#{story.author} | #{story.date}"
-        puts "#{story.content}"
+        puts "#{story.content.join("\n")}"
       elsif input == "list"
         list
       elsif input == "exit"
