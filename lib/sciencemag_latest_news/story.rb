@@ -33,4 +33,5 @@ class SciencemagLatestNews::Story
   def self.find(id)
     self.latest_stories[id.to_i - 1]
   end
+
 end
