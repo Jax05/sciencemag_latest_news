@@ -10,14 +10,15 @@ class SciencemagLatestNews::CLI
   def greeting
     puts "Welcome to ScienceMag Latest News!"
     puts "Fetching stories..."
+    puts ""
   end
 
   def list
-    puts ""
     @stories = SciencemagLatestNews::Story.latest_stories
     @stories.each.with_index(1) do |story, i|
       puts "#{i}. #{story.headline}"
     end
+
     puts ""
   end
 
@@ -25,10 +26,10 @@ class SciencemagLatestNews::CLI
     input = nil
 
     while input != "exit"
-      puts "Type the number of the story you'd like to read. You can also type 'list' to see the stories again or 'exit' to exit."
+      puts "Type the number of the story you'd like to read. You can also type 'list' to see the stories again or 'exit'."
       input = gets.chomp
 
-      if input.to_i > 0 && input.to_i <= SciencemagLatestNews::Story.latest_stories.size
+      if input.to_i.between?(1, SciencemagLatestNews::Story.latest_stories.size)
         story = SciencemagLatestNews::Story.find(input)
         puts ""
         puts "#{story.headline}"
@@ -40,6 +41,8 @@ class SciencemagLatestNews::CLI
         list
       elsif input == "exit"
         exit
+      else
+        puts "Invalid input. Please try again."
       end
     end
   end
