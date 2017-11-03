@@ -32,8 +32,11 @@ class SciencemagLatestNews::CLI
       if input.to_i.between?(1, SciencemagLatestNews::Story.latest_stories.size)
         story = SciencemagLatestNews::Story.find(input)
         puts ""
+        story.headline.size.times {print "-"}
+        puts ""
         puts "#{story.headline}"
         puts "#{story.author} | #{story.date}"
+        story.headline.size.times {print "-"}
         puts ""
         puts "#{story.content.join("\n\n")}"
         puts ""
