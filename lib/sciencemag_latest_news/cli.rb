@@ -38,6 +38,7 @@ class SciencemagLatestNews::CLI
         puts "#{story.author} | #{story.date}"
         puts ""
         puts "#{story.content.join("\n\n")}"
+        story.headline.size.times {print "-"}
         puts ""
       elsif input == "list"
         list
