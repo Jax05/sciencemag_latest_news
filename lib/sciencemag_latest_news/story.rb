@@ -8,7 +8,7 @@ class SciencemagLatestNews::Story
   end
 
   def self.scrape_latest_stories
-    doc = Nokogiri::HTML(open("http://www.sciencemag.org/news"))
+    doc = Nokogiri::HTML(URI.open("http://www.sciencemag.org/news"))
 
     doc.css(".subprime--a .item-list li").each do |article|
       story = self.new
@@ -23,7 +23,7 @@ class SciencemagLatestNews::Story
   end
 
   def self.scrape_story_content(url)
-    doc = Nokogiri::HTML(open("http://www.sciencemag.org" + url))
+    doc = Nokogiri::HTML(URI.open("http://www.sciencemag.org" + url))
 
     content = doc.css(".article__body > p").collect do |paragraph|
       paragraph.text
