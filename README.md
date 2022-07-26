@@ -1,20 +1,14 @@
+:bangbang: **Please Note** :bangbang:
+
+The current version of this gem is broken and development is suspended until further notice.
+
+![](https://media.giphy.com/media/dJYoOVAWf2QkU/giphy.gif)
+
 # Science Magazine Latest News
 
 This gem allows you to read all the latest news from the Science Magazine website via CLI.
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'sciencemag_latest_news'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install sciencemag_latest_news
 
